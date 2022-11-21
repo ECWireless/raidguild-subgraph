@@ -1,0 +1,135 @@
+type SummonComplete @entity(immutable: true) {
+  id: Bytes!
+  summoner: Bytes! # address
+  tokens: [Bytes]! # address[]
+  summoningTime: BigInt! # uint256
+  periodDuration: BigInt! # uint256
+  votingPeriodLength: BigInt! # uint256
+  gracePeriodLength: BigInt! # uint256
+  proposalDeposit: BigInt! # uint256
+  dilutionBound: BigInt! # uint256
+  processingReward: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SubmitProposal @entity(immutable: true) {
+  id: Bytes!
+  applicant: Bytes! # address
+  sharesRequested: BigInt! # uint256
+  lootRequested: BigInt! # uint256
+  tributeOffered: BigInt! # uint256
+  tributeToken: Bytes! # address
+  paymentRequested: BigInt! # uint256
+  paymentToken: Bytes! # address
+  details: String! # string
+  flags: [Boolean]! # bool[6]
+  proposalId: BigInt! # uint256
+  delegateKey: Bytes! # address
+  memberAddress: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SponsorProposal @entity(immutable: true) {
+  id: Bytes!
+  delegateKey: Bytes! # address
+  memberAddress: Bytes! # address
+  proposalId: BigInt! # uint256
+  proposalIndex: BigInt! # uint256
+  startingPeriod: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SubmitVote @entity(immutable: true) {
+  id: Bytes!
+  proposalId: BigInt! # uint256
+  proposalIndex: BigInt! # uint256
+  delegateKey: Bytes! # address
+  memberAddress: Bytes! # address
+  uintVote: Int! # uint8
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ProcessProposal @entity(immutable: true) {
+  id: Bytes!
+  proposalIndex: BigInt! # uint256
+  proposalId: BigInt! # uint256
+  didPass: Boolean! # bool
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ProcessWhitelistProposal @entity(immutable: true) {
+  id: Bytes!
+  proposalIndex: BigInt! # uint256
+  proposalId: BigInt! # uint256
+  didPass: Boolean! # bool
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ProcessGuildKickProposal @entity(immutable: true) {
+  id: Bytes!
+  proposalIndex: BigInt! # uint256
+  proposalId: BigInt! # uint256
+  didPass: Boolean! # bool
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Ragequit @entity(immutable: true) {
+  id: Bytes!
+  memberAddress: Bytes! # address
+  sharesToBurn: BigInt! # uint256
+  lootToBurn: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type TokensCollected @entity(immutable: true) {
+  id: Bytes!
+  token: Bytes! # address
+  amountToCollect: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type CancelProposal @entity(immutable: true) {
+  id: Bytes!
+  proposalId: BigInt! # uint256
+  applicantAddress: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type UpdateDelegateKey @entity(immutable: true) {
+  id: Bytes!
+  memberAddress: Bytes! # address
+  newDelegateKey: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Withdraw @entity(immutable: true) {
+  id: Bytes!
+  memberAddress: Bytes! # address
+  token: Bytes! # address
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
