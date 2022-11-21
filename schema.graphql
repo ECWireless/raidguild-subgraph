@@ -1,7 +1,7 @@
 type SummonComplete @entity(immutable: true) {
   id: Bytes!
   summoner: Bytes! # address
-  tokens: [Bytes]! # address[]
+  tokens: [Bytes!]! # address[]
   summoningTime: BigInt! # uint256
   periodDuration: BigInt! # uint256
   votingPeriodLength: BigInt! # uint256
